@@ -1,0 +1,57 @@
+<h2 class="d-flex justify-content-center pt-3">Demo Employee Management Portal</h2>
+<h5 class="d-flex justify-content-center">Microsoft SignalR, .NetCore Web API, SQL Server, Angular 15, S3, Lambda, SNS </h5>
+
+
+
+
+<nav class="navbar navbar-expand-sm bg-light navbar-dark">
+  
+  <div class="container" style="display: flex;">
+
+    <ul class="navbar-nav" style="display: contents;">
+      <li class="nav-item">
+        <button routerLink="/"
+        class="m-1 btn btn-light btn-outline-primary" Button
+        [ngClass]="{ 'active': router.url === '/'}"
+        >Departments
+        </button>
+      </li>
+
+      <li class="nav-item">
+        <button routerLink="/employees"
+        class="m-1 btn btn-light btn-outline-primary" Button
+        [ngClass]="{ 'active': router.url === '/employees'}"
+        >Employees</button>
+      </li>
+
+      <li class="nav-item">
+        <button routerLink="/upload"
+        class="m-1 btn btn-light btn-outline-primary" Button
+        [ngClass]="{ 'active': router.url === '/upload'}"
+        >AWS S3</button>
+      </li>
+
+      <span style="flex: 1 !important;"></span>
+
+      <li class="nav-item">
+        <button class=" btn btn-outline-light settings" routerLink="/settings"
+        (click)="rotate()"
+        >
+          <svg width="21" height="21" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="gear"
+          [@rotatedState]='state'
+          >
+            <path d="M23.914 15.5625C23.914 15.2972 23.7681 15.0408 23.5295 14.903L21.3447 13.6416C21.4437 13.1062 21.4999 12.5203 21.4999 12C21.4999 11.4797 21.4417 10.8914 21.3434 10.3584L23.5282 9.09703C23.7669 8.95917 23.9127 8.70277 23.9127 8.4375C23.9127 7.77656 21.9449 3.795 20.9193 3.795C20.7866 3.795 20.6527 3.82906 20.5328 3.89827L18.3428 5.16295C17.5109 4.45219 16.5499 3.89531 15.5 3.52313V0.9975C15.5 0.644859 15.258 0.328125 14.9126 0.255938C14.1312 0.0926719 13.3296 0 12.5 0C11.6703 0 10.8664 0.0926719 10.0868 0.255984C9.7437 0.328312 9.49995 0.645 9.49995 0.9975V3.52313C8.44995 3.89531 7.48902 4.45219 6.65933 5.16094L4.46698 3.89813C4.34745 3.82875 4.21339 3.79453 4.08074 3.79453C3.15636 3.79453 1.0873 7.63594 1.0873 8.43703C1.0873 8.70234 1.23317 8.95875 1.47181 9.09656L3.65666 10.358C3.55808 10.8938 3.49995 11.4375 3.49995 12C3.49995 12.5625 3.55817 13.1086 3.65652 13.6416L1.47167 14.903C1.23299 15.0408 1.08716 15.2972 1.08716 15.5625C1.08716 16.2234 3.05497 20.205 4.08059 20.205C4.21334 20.205 4.34722 20.1709 4.46713 20.1017L6.65712 18.837C7.48902 19.5469 8.44995 20.1047 9.49995 20.475V23.0006C9.49995 23.3533 9.74192 23.67 10.0873 23.7422C10.8687 23.9062 11.6703 24 12.4578 24C13.2453 24 14.0914 23.9073 14.8709 23.744C15.2562 23.6297 15.5 23.3531 15.5 23.0016V20.4759C16.5509 20.1038 17.5123 19.5469 18.3429 18.8367L20.5329 20.1014C20.6528 20.1706 20.7868 20.2047 20.9194 20.2047C21.8421 20.2031 23.914 16.3641 23.914 15.5625ZM12.5 15.75C10.4323 15.75 8.74995 14.0677 8.74995 12C8.74995 9.93234 10.4328 8.25 12.5 8.25C14.5671 8.25 16.2499 9.93234 16.2499 12C16.2499 14.0677 14.5671 15.75 12.5 15.75Z" fill="black"/>
+          </svg>
+        </button>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container">
+  <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+  <router-outlet></router-outlet>
+</div>
+

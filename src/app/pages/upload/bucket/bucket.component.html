@@ -1,0 +1,129 @@
+<ng-template #fileUpload let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Upload File to {{name}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+        <div class="input-group">
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"
+            (change)="createFile($event)" />
+          </div>
+	</div>
+    
+	<div class="modal-footer">
+        <button type="button" class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal"
+        data-backdrop="static" data-keyboard="false" (click)="modal.dismiss('Cross click')" 
+        >
+        Upload
+        </button>
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>
+
+<nav class="navbar" style="display: flex;">
+    <ng-template [ngIf]="!Loading">
+        <button class="m-1 btn btn-danger" (click)="deleteBucket()" Button>
+         DELETE BUCKET </button>
+
+        <span style="flex: 1;"></span>
+
+        <button class="m-1 btn btn-primary" (click)="openBackDropCustomClass(fileUpload)" Button> UPLOAD FILE + </button>
+    </ng-template>
+
+    <ng-template [ngIf]="Loading">
+        <button class="m-1 btn btn-danger" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button>
+
+        <span style="flex: 1;"></span>
+
+        <button class="m-1 btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 
+            Loading...
+        </button>
+    </ng-template>
+
+
+
+</nav>
+
+<hr>
+
+<!-- <button type="button" class="btn btn-light ms-1">
+    <svg width="30" height="auto" viewBox="0 0 107 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.68408 9.33525C10.1263 8.8615 10.7453 8.59253 11.3933 8.59253H96.736C97.3817 8.59253 97.9987 8.85958 98.4407 9.33036C98.8826 9.80115 99.1102 10.4338 99.0695 11.0782L92.6396 112.788C92.5617 114.02 91.5401 114.979 90.3061 114.979H18.4078C17.1789 114.979 16.1597 114.027 16.0752 112.801L9.06072 11.0916C9.01613 10.445 9.24188 9.809 9.68408 9.33525ZM13.8983 13.2688L20.5903 110.302H88.1111L94.2453 13.2688H13.8983Z" fill="url(#paint0_linear_13_470)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.871826 10.9307C0.871826 9.63936 1.91865 8.59253 3.20998 8.59253H103.751C105.042 8.59253 106.089 9.63936 106.089 10.9307C106.089 12.222 105.042 13.2688 103.751 13.2688H3.20998C1.91865 13.2688 0.871826 12.222 0.871826 10.9307Z" fill="url(#paint1_linear_13_470)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M42.9584 2.74715C42.9584 1.45582 44.0052 0.408997 45.2965 0.408997H62.8327C64.124 0.408997 65.1708 1.45582 65.1708 2.74715V10.9307C65.1708 12.222 64.124 13.2688 62.8327 13.2688C61.5414 13.2688 60.4945 12.222 60.4945 10.9307V5.08531H47.6347V10.9307C47.6347 12.222 46.5879 13.2688 45.2965 13.2688C44.0052 13.2688 42.9584 12.222 42.9584 10.9307V2.74715Z" fill="url(#paint2_linear_13_470)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M40.6203 78.7372C41.9116 78.7372 42.9584 79.784 42.9584 81.0753L42.9584 103.288C42.9584 104.579 41.9116 105.626 40.6203 105.626C39.3289 105.626 38.2821 104.579 38.2821 103.288L38.2821 81.0753C38.2821 79.784 39.3289 78.7372 40.6203 78.7372Z" fill="url(#paint3_linear_13_470)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M27.7605 65.8773C29.0518 65.8773 30.0987 66.9241 30.0987 68.2155V103.288C30.0987 104.579 29.0518 105.626 27.7605 105.626C26.4692 105.626 25.4224 104.579 25.4224 103.288V68.2155C25.4224 66.9241 26.4692 65.8773 27.7605 65.8773Z" fill="url(#paint4_linear_13_470)"/>
+        <defs>
+        <linearGradient id="paint0_linear_13_470" x1="54.0647" y1="8.59253" x2="54.0647" y2="114.979" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0069CD"/>
+        <stop offset="1" stop-color="#6002E0"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_13_470" x1="53.4803" y1="8.59253" x2="53.4803" y2="13.2688" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0069CD"/>
+        <stop offset="1" stop-color="#6002E0"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_13_470" x1="54.0646" y1="0.408997" x2="54.0646" y2="13.2688" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0069CD"/>
+        <stop offset="1" stop-color="#6002E0"/>
+        </linearGradient>
+        <linearGradient id="paint3_linear_13_470" x1="40.6203" y1="78.7372" x2="40.6203" y2="105.626" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0069CD"/>
+        <stop offset="1" stop-color="#6002E0"/>
+        </linearGradient>
+        <linearGradient id="paint4_linear_13_470" x1="27.7605" y1="65.8773" x2="27.7605" y2="105.626" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0069CD"/>
+        <stop offset="1" stop-color="#6002E0"/>
+        </linearGradient>
+        </defs>
+    </svg> 
+</button> -->
+
+<!-- Table of S3 Bucket Contents -->
+
+
+<ng-template [ngIf]="!Loading">
+    <table class="table table-striped" style="text-align: center;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let content of contents; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{content.Name}}</td>
+                <td>
+                    <a href="{{content.PresignedUrl}}" target="_blank">
+                        <button type="button" class="btn btn-primary m-1">
+                            VIEW
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-danger m-1" 
+                        (click)="deleteFile(content.Name)"
+                    >DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<ng-template [ngIf]="FilesNothing">
+    <div>
+        <h3 class="d-flex justify-content-center">There are no files...</h3>
+    </div>
+</ng-template>
+
+
+<ng-template [ngIf]="Loading">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+</ng-template>
